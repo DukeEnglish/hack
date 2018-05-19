@@ -31,12 +31,16 @@ def word_seg(inputData):
     简单描述一下jieba分词。
     '''
     stopWords = open("../data/中文停用词.txt").read().split("\n") # 加载停用词，网上一把一把
+    # for i in stopWords:
+    #     print(i)
+    #     break
     results=[] # 存放结果
     wordlist = []
     Data = inputData
     Data = "".join(re.findall(u'[\u4e00-\u9fa5]+', Data)) # 首先将数据中所有的中文提取出来
     for i in Data:
         if i not in stopWords:
+            print(i)
             wordlist.append(i)
     wordlist = ''.join(wordlist)
     wordList = "/".join(jieba.cut(wordlist)) # 使用jieba进行切词，并且把每个词语使用/分隔开
@@ -83,6 +87,7 @@ def part_match(query): # 先做前缀匹配，在前缀匹配的结果里面，�
     if candidates == []:
         return 0
     if len(word.strip().split("\t"))>1:
+        print('候选结果有', candidates)
         for i in word.strip().split("\t")[1:]:
             for j in candidates:
                 if i in j:
@@ -100,7 +105,7 @@ def query_search(query):
     elif part_match(query) != 0:
         tmp = part_match(query)
         print(tmp)
-        print('type and answer',type(part_match(query)))
+        print('type and answer',type(tmp))
         print('\t'.join(menu[tmp]))
         print('2')
         return '\t'.join(menu[tmp]) 
