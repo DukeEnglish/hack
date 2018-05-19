@@ -15,7 +15,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')
 # print('哈哈哈')
 #query_test = sys.argv[1]
 menu = {}
-f = codecs.open('menu.txt','r','utf-8')
+f = codecs.open('menu_hack.txt','r','utf-8')
 for line in f:
     line = line.strip().split('\t')
     menu[line[0]] = line[:]

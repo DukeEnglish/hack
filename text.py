@@ -25,10 +25,11 @@ def iamge_query():
             return query_result_
         res['result']['name']= query_result[0]
         res['result']['description']= query_result[1]
-        res['result']['material']= query_result[2]
-        res['result']['link']= query_result[3]
+        res['result']['material-1']= query_result[2]
+        res['result']['material-2']= query_result[3]
+        res['result']['link']= query_result[4]
         res['status'] = 0
-        res['status'] = '成功'
+        res['message'] = '成功'
         print(res)
         return json.dumps(res)
     except Exception as e:
@@ -51,10 +52,11 @@ def text_query():
         query_result = query_result.strip().split('\t')
         res['result']['name']= query_result[0]
         res['result']['description']= query_result[1]
-        res['result']['material']= query_result[2]
-        res['result']['link']= query_result[3]
+        res['result']['material-1']= query_result[2]
+        res['result']['material-2']= query_result[3]
+        res['result']['link']= query_result[4]
         res['status'] = 0
-        res['status'] = '成功'
+        res['message'] = '成功'
         print(res)
         return json.dumps(res)
     except Exception as e:
