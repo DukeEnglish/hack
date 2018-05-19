@@ -48,8 +48,18 @@ def text_query():
     res['result'] = {}
     try:
         query_name = req['food_name']
-        query_result = text_recog.query_search(query_name)
-        query_result = query_result.strip().split('\t')
+        query_result_ = text_recog.query_search(query_name)
+        query_result = query_result_.strip().split('\t')
+        if len(query_result) < 3:
+            res['result']['name']= 'not exit'
+            res['result']['description']= query_result_
+            res['result']['material-1']= 'not exit'
+            res['result']['material-2']= 'not exit'
+            res['result']['link']= 'not exit'
+            res['status'] = 0
+            res['message'] = '成功'
+            print(res)
+            return json.dumps(res)
         res['result']['name']= query_result[0]
         res['result']['description']= query_result[1]
         res['result']['material-1']= query_result[2]
