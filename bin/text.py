@@ -56,7 +56,7 @@ def text_query():
             res['result']['material-1']= 'not exit'
             res['result']['material-2']= 'not exit'
             res['result']['link']= 'not exit'
-            res['status'] = 0
+            res['status'] = 1
             res['message'] = '成功'
             print(res)
             return json.dumps(res)
